@@ -9,7 +9,9 @@
 <link rel="stylesheet" type="text/css" href="../themes/IconExtension.css">
 <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/themes/icon.css">
 <script type="text/javascript" src="../js/jquery.min.js"></script>   
-<script type="text/javascript" src="../js/jquery.easyui.min.js"></script>  
+<script type="text/javascript" src="../js/jquery.easyui.min.js"></script>
+<script type="text/javascript" src="../js/datagrid-detailview.js"></script>
+<script type="text/javascript" src="../js/jquery.edatagrid.js"></script>
 <script type="text/javascript" src="../js/easyui-lang-zh_CN.js"></script>
 <script type="text/javascript">
 	<!--菜单处理-->
@@ -42,11 +44,11 @@
 
                }*/
                $.each(data,function(index,name){
-                   console.log(name);
+                   // console.log(name);
 
                    var s = "";
                    $.each(name.mList,function (index1,name1) {
-                       console.log(name1);
+                       // console.log(name1);
                        s+="<div style='text-align:center'><a onclick='dianji(\""+name1.title+"\",\""+name1.iconCls+"\",\""+name1.url+"\")' class='easyui-linkbutton' data-options='plain:true,iconCls:"+name1.iconCls+"'>"+name1.title+"<a></div>";
                    });
 
@@ -73,7 +75,7 @@
                 title: title,
                 selected: true,
                 iconCls:iconCls,
-                href:"${pageContext.request.contextPath}/"+"index.jsp",
+                href:"${pageContext.request.contextPath}/"+url,
                 closable:true,
             });
 

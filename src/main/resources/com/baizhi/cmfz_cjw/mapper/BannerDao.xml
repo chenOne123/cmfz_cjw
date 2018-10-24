@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.baizhi.cmfz_cjw.dao.BannerDao">
+
+    <!--查询-->
+    <select id="getAll" resultType="Banner">
+        select * from banner where status = 'y' limit #{start},#{total}
+    </select>
+    <!--计算-->
+    <select id="getCount" resultType="int">
+        select count(*) from banner where status = 'y'
+    </select>
+    <!--添加-->
+    <insert id="insert">
+        insert into banner values(#{id},#{name},#{url},'y',sysdate(),#{description})
+    </insert>
+    <!--修改-->
+    <update id="update">
+        update banner set status=#{status} WHERE id = #{id}
+    </update>
+    <!--删除-->
+    <delete id="delete">
+        delete from banner where id = #{id}
+    </delete>
+    
+</mapper>
