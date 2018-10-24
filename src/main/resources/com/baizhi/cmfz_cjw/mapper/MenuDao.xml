@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.baizhi.cmfz_cjw.dao.MenuDao">
+    <resultMap id="menuResultMap" type="Menu">
+        <result column="t1Id" property="id"/>
+        <result column="t1Title" property="title"/>
+        <result column="t1ParentId" property="parentId"/>
+        <collection property="mList" javaType="java.util.List" ofType="Menu">
+            <result column="id" property="id"/>
+            <result column="title" property="title"/>
+            <result column="parentId" property="parentId"/>
+        </collection>
+    </resultMap>
+
+    <select id="getAll" resultMap="menuResultMap">
+      SELECT t1.id t1Id,t1.title t1Title,t1.parentId t1ParentId ,t2.id ,t2.title ,t2.parentId
+      FROM menu t1 LEFT JOIN menu t2 ON t1.id = t2.parentId where t2.parentId is not null
+    </select>
+
+</mapper>
