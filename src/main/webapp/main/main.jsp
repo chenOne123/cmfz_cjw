@@ -22,13 +22,13 @@
            type:"post",
            dataType:"json",
            success:function (data) {
-               for (var i =0; i<data.length;i++){
+               /*for (var i =0; i<data.length;i++){
                    console.log(data[i]);
                    // $("#aa").append("<div>"+data[i].title+"</div>");
                    var s = "";
                    for (var j = 0; j<data[i].mList.length;j++){
                        console.log(data[i].mList.length);
-                       s+='<a href="#" style="font-size: 15px">'+data[i].mList[j].title+'</a><br>'
+                       s+='<a href="#" class="" style="font-size: 15px">'+data[i].mList[j].title+'</a><br>'
 
                    }
                    $('#aa').accordion('add', {
@@ -39,15 +39,51 @@
 
                    });
 
-               }
+               }*/
+               $.each(data,function(index,name){
+                   console.log(name);
+
+                   var s = "";
+                   $.each(name.mList,function (index1,name1) {
+                       console.log(name1);
+                       s+="<div style='text-align:center'><a onclick='dianji(\""+name1.title+"\",\""+name1.iconCls+"\",\""+name1.url+"\")' class='easyui-linkbutton' data-options='plain:true,iconCls:"+name1.iconCls+"'>"+name1.title+"<a></div>";
+                   });
+
+                   $('#aa').accordion('add', {
+                       title: ""+name.title+"",
+                       content: s,
+                       selected: false,
+                       iconCls:name.iconCls,
+
+                   });
+               });
            },
        });
     });
+
+    function dianji(title,iconCls,url) {
+        console.log(title+"11")
+        var a = $("#tt").tabs("exists",title);
+        if(a){
+            $("#tt").tabs("select",title);
+        }else{
+            $('#tt').tabs('add',{
+                title: title,
+                selected: true,
+                iconCls:iconCls,
+                href:"${pageContext.request.contextPath}/"+"index.jsp",
+                closable:true,
+            });
+
+        }
+
+    }
 </script>
 
 </head>
 <body class="easyui-layout">   
     <div data-options="region:'north',split:true" style="height:60px;background-color:  #5C160C">
+        <%--<iframe href="${pageContext.request.contextPath}/index.jsp"></iframe>--%>
     	<div style="font-size: 24px;color: #FAF7F7;font-family: 楷体;font-weight: 900;width: 500px;float:left;padding-left: 20px;padding-top: 10px" >持名法州后台管理系统</div>
     	<div style="font-size: 16px;color: #FAF7F7;font-family: 楷体;width: 300px;float:right;padding-top:15px">欢迎您:${sessionScope.user.name} &nbsp;<a href="#" class="easyui-linkbutton" data-options="iconCls:'icon-edit'">修改密码</a>&nbsp;&nbsp;<a href="#" class="easyui-linkbutton" data-options="iconCls:'icon-01'">退出系统</a></div>
     </div>   
