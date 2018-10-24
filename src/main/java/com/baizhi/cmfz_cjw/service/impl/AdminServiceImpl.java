@@ -5,8 +5,10 @@ import com.baizhi.cmfz_cjw.entity.Admin;
 import com.baizhi.cmfz_cjw.service.AdminService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 @Service
+@Transactional
 public class AdminServiceImpl implements AdminService {
     @Autowired
     private AdminDao adminDao;

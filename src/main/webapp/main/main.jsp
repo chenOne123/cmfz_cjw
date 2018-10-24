@@ -6,7 +6,8 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <title>持名法州主页</title>
 <link rel="stylesheet" type="text/css" href="../themes/default/easyui.css">   
-<link rel="stylesheet" type="text/css" href="../themes/IconExtension.css">   
+<link rel="stylesheet" type="text/css" href="../themes/IconExtension.css">
+<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/themes/icon.css">
 <script type="text/javascript" src="../js/jquery.min.js"></script>   
 <script type="text/javascript" src="../js/jquery.easyui.min.js"></script>  
 <script type="text/javascript" src="../js/easyui-lang-zh_CN.js"></script>
@@ -54,6 +55,7 @@
                        content: s,
                        selected: false,
                        iconCls:name.iconCls,
+                       // iconCls:"icon-tip",
 
                    });
                });

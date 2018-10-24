@@ -13,11 +13,13 @@
             <result column="title" property="title"/>
             <result column="parentId" property="parentId"/>
             <result column="t2IconCls" property="iconCls" />
+            <result column="url" property="url"/>
         </collection>
     </resultMap>
 
     <select id="getAll" resultMap="menuResultMap">
-      SELECT t1.id t1Id,t1.title t1Title,t1.parentId t1ParentId ,t1.iconCls t1IconCls ,t2.id ,t2.title ,t2.parentId, t2.iconCls t2IconCls
+      SELECT t1.id t1Id,t1.title t1Title,t1.parentId t1ParentId ,t1.iconCls t1IconCls ,
+      t2.id ,t2.title ,t2.parentId, t2.iconCls t2IconCls, t2.url
       FROM menu t1 LEFT JOIN menu t2 ON t1.id = t2.parentId where t2.parentId is not null
     </select>
 
