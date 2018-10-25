@@ -10,8 +10,8 @@ public class Banner {
     private String name;
     private String url;
     private String status;
-    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "GMT+8")
-    @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
+//    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "GMT+8")
+//    @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     private Date createDate;
     private String description;
 
