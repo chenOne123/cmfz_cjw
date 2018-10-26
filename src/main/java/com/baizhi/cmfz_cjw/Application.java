@@ -18,16 +18,5 @@ public class Application {
         SpringApplication.run(Application.class, args);
     }
 
-    //文件上传
-    @Bean
-    public MultipartConfigElement multipartConfigElement(){
-
-        MultipartConfigFactory factory = new MultipartConfigFactory();
-        //设置上传的文件大小上限，如果超出限制，就会抛出异常信息
-        factory.setMaxFileSize("128KB");
-        //设置一次总上传数据的大小，用于多文件上传设置
-        factory.setMaxRequestSize("256KB");
-        return factory.createMultipartConfig();
-    }
 
 }
