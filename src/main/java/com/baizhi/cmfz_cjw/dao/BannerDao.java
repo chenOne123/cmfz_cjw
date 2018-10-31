@@ -16,5 +16,7 @@ public interface BannerDao {
     public void update(@Param("id") int id, @Param("status") String status);
     //删除
     public void delete(int id);
+    //查询
+    List<Banner> getSelect();
 
 }

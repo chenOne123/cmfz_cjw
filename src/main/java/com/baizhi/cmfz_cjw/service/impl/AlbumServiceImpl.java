@@ -62,11 +62,12 @@ public class AlbumServiceImpl implements AlbumService {
         String fileName = file.getOriginalFilename();
         //给文件重新命名
         String extension = FilenameUtils.getExtension(fileName);
+        System.out.println(extension);
         //创建随机数
         String s = UUID.randomUUID().toString();
         String newName = s+"."+extension;
 
-        album.setCoverImg(s);
+        album.setCoverImg(newName);
         albumDao.insert(album);
         try {
             file.transferTo(new File(file1,newName));

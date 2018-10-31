@@ -4,14 +4,33 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.baizhi.cmfz_cjw.dao.AlbumDao">
     <resultMap id="albumResultMap" type="Album">
-        <result column="t1Name" property="name" />
+        <result column="t1Name" property="name"/>
         <result column="id" property="id"/>
         <collection property="children" javaType="java.util.List" ofType="Chapter">
             <result column="t2ID" property="id"/>
             <result column="name" property="name"/>
             <result column="url" property="url"/>
-            <result column="size" property="size" />
+            <result column="size" property="size"/>
             <result column="duration" property="duration"/>
+        </collection>
+    </resultMap>
+    
+    <resultMap id="albumResultMap2" type="Album">
+        <result column="id" property="id" />
+        <result column="name" property="name" />
+        <result column="coverImg" property="coverImg" />
+        <result column="count" property="count" />
+        <result column="score" property="score" />
+        <result column="author" property="author" />
+        <result column="broadCast" property="broadCast" />
+        <result column="brief" property="brief" />
+        <result column="publishDate" property="publishDate" />
+        <collection property="children" ofType="Chapter">
+            <result column="t2Id" property="id" />
+            <result column="t2Name" property="name" />
+            <result column="url" property="url" />
+            <result column="size" property="size" />
+            <result column="duration" property="duration" />
         </collection>
     </resultMap>
 
@@ -27,14 +46,24 @@
     <select id="getId" resultType="Album">
         select * from album where id = #{id}
     </select>
-    
+
     <update id="getUpdate">
         update album set count = (select count(*) from chapter where aid = #{id}) where id = #{id}
     </update>
-    
+
     <!--添加专辑-->
     <insert id="insert">
         insert into album values(#{id},#{name},#{coverImg},0,0,#{author},#{broadCast},#{brief},sysdate())
     </insert>
-    
+
+    <select id="getAselect" resultType="Album">
+        select * from album
+    </select>
+
+    <!--根据专辑id查询详情-->
+    <select id="getXqingqi" resultMap="albumResultMap">
+        SELECT t1.*,t2.id t2Id,t2.name,t2.url,t2.size,t2.duration
+        FROM album t1 LEFT JOIN chapter t2 ON t1.id = t2.aid WHERE t1.id = #{id}
+    </select>
+
 </mapper>

@@ -24,5 +24,9 @@
     <delete id="delete">
         delete from banner where id = #{id}
     </delete>
+
+    <select id="getSelect" resultType="Banner">
+        select * from banner where status = 'y'
+    </select>
     
 </mapper>

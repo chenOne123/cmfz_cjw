@@ -92,7 +92,7 @@
                 if(data != null){
                     $("#album_xiangqing").dialog('open');
                     $("#album_xiangqing_name").val(data.data.name);
-                    $("#album_xiangqing_coverImg").prop("src","${pageContext.request.contextPath}/album/"+data.data.coverImg+".jpg");
+                    $("#album_xiangqing_coverImg").prop("src","${pageContext.request.contextPath}/album/"+data.data.coverImg);
                     $("#album_xiangqing_count").val(data.data.count);
                     $("#album_xiangqing_score").val(data.data.score);
                     $("#album_xiangqing_author").val(data.data.author);
@@ -203,7 +203,7 @@
 <div id="album_xiangqing">
     标题：<input id="album_xiangqing_name" type="text" disabled="disabled"><br><br>
     <%--插图：<input id="album_xiangqing_coverImg" type="text" disabled="disabled"><br><br>--%>
-    插图:<img id="album_xiangqing_coverImg" src=""><br><br>
+    插图:<img id="album_xiangqing_coverImg" src="" width="300px" height="150px"><br><br>
     章节数量：<input id="album_xiangqing_count" type="text" disabled="disabled"><br><br>
     得分：<input id="album_xiangqing_score" type="text" disabled="disabled"><br><br>
     作者：<input id="album_xiangqing_author" type="text" disabled="disabled"><br><br>

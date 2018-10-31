@@ -16,4 +16,9 @@ public interface AlbumDao {
     void getUpdate(int id);
     //添加专辑
     void insert(Album album);
+    //查询
+    List<Album> getAselect();
+    //根据专辑id查询详情
+    Album getXqingqi(int id);
+
 }

@@ -2,8 +2,10 @@ package com.baizhi.cmfz_cjw;
 
 import com.baizhi.cmfz_cjw.dao.AdminDao;
 import com.baizhi.cmfz_cjw.dao.MenuDao;
+import com.baizhi.cmfz_cjw.dao.UserDao;
 import com.baizhi.cmfz_cjw.entity.Admin;
 import com.baizhi.cmfz_cjw.entity.Menu;
+import com.baizhi.cmfz_cjw.entity.User;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,6 +22,8 @@ public class ApplicationTests {
     private AdminDao adminDao;
     @Autowired
     private MenuDao menuDao;
+    @Autowired
+    private UserDao userDao;
 
     @Test
     public void contextLoads() {
@@ -34,6 +38,12 @@ public class ApplicationTests {
             System.out.println(menu);
 
         }
+    }
+
+    @Test
+    public void test2(){
+        List chen = userDao.getChen();
+        System.out.println(chen.size());
     }
 
 }
